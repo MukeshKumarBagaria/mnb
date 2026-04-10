@@ -65,21 +65,15 @@ const Hero = () => {
 
             <div className='flex flex-col sm:flex-row gap-4 mb-14'>
               <Link href='/contact'>
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                  className='flex items-center justify-center gap-2 bg-primary text-white text-lg font-semibold py-4 px-10 rounded-full hover:bg-darkmode hover:cursor-pointer transition-colors duration-300 shadow-lg shadow-primary/25 w-full sm:w-auto'>
+                <button className='flex items-center justify-center gap-2 bg-primary text-white text-lg font-semibold py-4 px-10 rounded-full hover:bg-darkmode hover:cursor-pointer transition-all duration-300 shadow-lg shadow-primary/25 w-full sm:w-auto hover:scale-[1.03] active:scale-[0.98]'>
                   Get a Free Strategy Call
                   <Icon icon='tabler:arrow-right' width='20' height='20' />
-                </motion.button>
+                </button>
               </Link>
               <Link href='/services'>
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                  className='flex items-center justify-center gap-2 bg-white text-darkmode text-lg font-semibold py-4 px-10 rounded-full border-2 border-gray-200 hover:border-primary hover:text-primary hover:cursor-pointer transition-all duration-300 w-full sm:w-auto'>
+                <button className='flex items-center justify-center gap-2 bg-white text-darkmode text-lg font-semibold py-4 px-10 rounded-full border-2 border-gray-200 hover:border-primary hover:text-primary hover:cursor-pointer transition-all duration-300 w-full sm:w-auto hover:scale-[1.03] active:scale-[0.98]'>
                   View Our Services
-                </motion.button>
+                </button>
               </Link>
             </div>
 
