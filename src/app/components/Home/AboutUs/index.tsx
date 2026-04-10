@@ -46,35 +46,42 @@ const Aboutus = () => {
               ? Array.from({ length: 3 }).map((_, index) => (
                   <AboutSkeleton key={index} />
                 ))
-              : about.map((item, i) => (
-                  <div
-                    key={i}
-                    className='hover:bg-darkmode bg-white rounded-3xl p-8 shadow-xl group'>
-                    <h5 className='group-hover:text-white mb-5'>
-                      {item.heading}
-                    </h5>
-                    <Image
-                      src={item.imgSrc}
-                      alt={item.heading}
-                      width={100}
-                      height={100}
-                      className='mb-5'
-                    />
-                    <p className='text-lg font-normal text-black group-hover:text-white mb-5'>
-                      {item.paragraph}
-                    </p>
-                    <Link
-                      href='/about'
-                      className='text-18 font-semibold text-primary hover-underline flex items-center'>
-                      {item.link}
-                      <Icon
-                        icon='tabler:chevron-right'
-                        width='20'
-                        height='20'
+              : about.map((item, i) => {
+                  const pastelColors = [
+                    'hover:bg-[#EFF6FF]', // light pastel blue
+                    'hover:bg-[#FDF2FF]', // light pastel pink
+                    'hover:bg-[#FFF7ED]', // light pastel peach
+                  ]
+                  return (
+                    <div
+                      key={i}
+                      className={`${pastelColors[i % 3]} bg-white rounded-3xl p-8 shadow-xl group transition-colors duration-300`}>
+                      <h5 className='group-hover:text-darkmode mb-5'>
+                        {item.heading}
+                      </h5>
+                      <Image
+                        src={item.imgSrc}
+                        alt={item.heading}
+                        width={100}
+                        height={100}
+                        className='mb-5'
                       />
-                    </Link>
-                  </div>
-                ))}
+                      <p className='text-lg font-normal text-black/70 group-hover:text-black mb-5'>
+                        {item.paragraph}
+                      </p>
+                      <Link
+                        href='/about'
+                        className='text-18 font-semibold text-primary hover-underline flex items-center'>
+                        {item.link}
+                        <Icon
+                          icon='tabler:chevron-right'
+                          width='20'
+                          height='20'
+                        />
+                      </Link>
+                    </div>
+                  )
+                })}
           </div>
         </div>
       </div>
