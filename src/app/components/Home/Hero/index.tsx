@@ -2,7 +2,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Icon } from '@iconify/react/dist/iconify.js'
-import { motion } from 'framer-motion'
 
 const stats = [
   { value: '150+', label: 'Brands Scaled' },
@@ -12,7 +11,7 @@ const stats = [
 
 const Hero = () => {
   return (
-    <section className='relative overflow-hidden min-h-[90vh] flex items-center'>
+    <section className='relative overflow-hidden h-screen flex items-center'>
       {/* Background gradient */}
       <div className='absolute inset-0 bg-gradient-to-br from-white via-[#F0FDFA] to-[#E0F5F0] -z-10'></div>
       {/* Decorative blobs */}
@@ -22,10 +21,7 @@ const Hero = () => {
       <div className='container mx-auto max-w-7xl px-4 pt-28 pb-16 lg:pt-20 lg:pb-10'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 items-center'>
           {/* LEFT — Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}>
+          <div className='animate-fade-in-up'>
             <div className='inline-flex items-center gap-2 py-2 px-5 bg-primary/10 rounded-full mb-6'>
               <div className='w-2 h-2 bg-primary rounded-full animate-pulse'></div>
               <p className='text-primary text-sm font-bold tracking-wider'>
@@ -37,23 +33,9 @@ const Hero = () => {
               Marketing &<br />
               Branding Strategies<br />
               That Drive{' '}
-              <span className='relative'>
+              <span className='relative inline-block'>
                 <span className='text-primary'>Real Growth</span>
-                <svg
-                  className='absolute -bottom-2 left-0 w-full'
-                  viewBox='0 0 200 12'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'>
-                  <motion.path
-                    d='M2 8C50 2 150 2 198 8'
-                    stroke='#0D9488'
-                    strokeWidth='3'
-                    strokeLinecap='round'
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{ duration: 1.2, delay: 0.8 }}
-                  />
-                </svg>
+                <span className='absolute -bottom-1 left-0 w-full h-[3px] bg-primary rounded-full animate-expand-width'></span>
               </span>
             </h1>
 
@@ -80,28 +62,23 @@ const Hero = () => {
             {/* Stats strip */}
             <div className='flex flex-wrap gap-8 sm:gap-12'>
               {stats.map((stat, i) => (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1 + i * 0.15 }}>
+                  className='animate-fade-in-up'
+                  style={{ animationDelay: `${0.8 + i * 0.15}s` }}>
                   <p className='text-3xl sm:text-4xl font-extrabold text-darkmode'>
                     {stat.value}
                   </p>
                   <p className='text-sm text-black/40 font-medium mt-1'>
                     {stat.label}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* RIGHT — Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
-            className='relative flex items-center justify-center lg:justify-end'>
+          <div className='relative flex items-center justify-center lg:justify-end animate-fade-in-right'>
             {/* Glow effect behind image */}
             <div className='absolute w-[85%] h-[85%] bg-gradient-to-br from-primary/15 to-[#99F6E4]/20 rounded-full blur-2xl'></div>
 
@@ -115,10 +92,7 @@ const Hero = () => {
             />
 
             {/* Floating badges */}
-            <motion.div
-              animate={{ y: [0, -12, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              className='absolute top-8 right-4 lg:right-0 bg-white rounded-2xl shadow-xl px-5 py-3 z-20 flex items-center gap-3'>
+            <div className='absolute top-8 right-4 lg:right-0 bg-white rounded-2xl shadow-xl px-5 py-3 z-20 flex items-center gap-3 animate-float-slow'>
               <div className='w-10 h-10 bg-primary/15 rounded-xl flex items-center justify-center'>
                 <Icon
                   icon='mdi:email-outline'
@@ -133,17 +107,9 @@ const Hero = () => {
                 </p>
                 <p className='text-[10px] text-black/40'>+147% avg ROI</p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{
-                duration: 3.5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay: 0.5,
-              }}
-              className='absolute bottom-16 left-0 lg:-left-4 bg-white rounded-2xl shadow-xl px-5 py-3 z-20 flex items-center gap-3'>
+            <div className='absolute bottom-16 left-0 lg:-left-4 bg-white rounded-2xl shadow-xl px-5 py-3 z-20 flex items-center gap-3 animate-float-medium'>
               <div className='w-10 h-10 bg-[#FEF3C7] rounded-xl flex items-center justify-center'>
                 <Icon
                   icon='mdi:magnify'
@@ -158,17 +124,9 @@ const Hero = () => {
                 </p>
                 <p className='text-[10px] text-black/40'>Page 1 rankings</p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay: 1,
-              }}
-              className='absolute bottom-4 right-8 lg:right-4 bg-white rounded-2xl shadow-xl px-5 py-3 z-20 flex items-center gap-3'>
+            <div className='absolute bottom-4 right-8 lg:right-4 bg-white rounded-2xl shadow-xl px-5 py-3 z-20 flex items-center gap-3 animate-float-fast'>
               <div className='w-10 h-10 bg-[#FCE7F3] rounded-xl flex items-center justify-center'>
                 <Icon
                   icon='mdi:bullhorn-outline'
@@ -181,10 +139,83 @@ const Hero = () => {
                 <p className='text-xs font-bold text-darkmode'>Social Media</p>
                 <p className='text-[10px] text-black/40'>Brand awareness</p>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes fade-in-right {
+          from {
+            opacity: 0;
+            transform: translateX(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        @keyframes expand-width {
+          from {
+            width: 0;
+          }
+          to {
+            width: 100%;
+          }
+        }
+        @keyframes float-slow {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-12px);
+          }
+        }
+        @keyframes float-medium {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(10px);
+          }
+        }
+        @keyframes float-fast {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 0.7s ease-out both;
+        }
+        .animate-fade-in-right {
+          animation: fade-in-right 0.8s ease-out 0.3s both;
+        }
+        .animate-expand-width {
+          animation: expand-width 1s ease-out 0.8s both;
+        }
+        .animate-float-slow {
+          animation: float-slow 3s ease-in-out infinite;
+        }
+        .animate-float-medium {
+          animation: float-medium 3.5s ease-in-out 0.5s infinite;
+        }
+        .animate-float-fast {
+          animation: float-fast 4s ease-in-out 1s infinite;
+        }
+      `}</style>
     </section>
   )
 }
