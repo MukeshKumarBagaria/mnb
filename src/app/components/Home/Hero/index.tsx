@@ -83,19 +83,19 @@ const Hero = () => {
             </div>
 
             {/* Stats strip */}
-            <div className='flex flex-wrap gap-5 sm:gap-8 justify-center lg:justify-start'>
+            <div className='flex items-center justify-around sm:justify-start sm:flex-wrap sm:gap-8 lg:justify-start w-full'>
               {stats.map((stat, i) => (
                 <div
                   key={i}
-                  className='flex items-center gap-2.5 animate-fade-in-up'
+                  className={`flex items-center gap-2 sm:gap-2.5 animate-fade-in-up${i > 0 ? ' border-l border-darkmode/10 pl-4 sm:border-l-0 sm:pl-0' : ''}`}
                   style={{ animationDelay: `${0.6 + i * 0.15}s` }}>
-                  <div className='w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0'
+                  <div className='w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center flex-shrink-0'
                     style={{ backgroundColor: '#5170ff15' }}>
-                    <Icon icon={stat.icon} width='18' className='text-primary' />
+                    <Icon icon={stat.icon} width='16' className='text-primary' />
                   </div>
                   <div>
-                    <p className='text-xl sm:text-2xl font-extrabold text-darkmode leading-none'>{stat.value}</p>
-                    <p className='text-xs text-darkmode/40 font-medium mt-0.5'>{stat.label}</p>
+                    <p className='text-base sm:text-2xl font-extrabold text-darkmode leading-none'>{stat.value}</p>
+                    <p className='text-[10px] sm:text-xs text-darkmode/40 font-medium mt-0.5'>{stat.label}</p>
                   </div>
                 </div>
               ))}
