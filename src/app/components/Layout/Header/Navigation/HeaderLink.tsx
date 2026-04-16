@@ -1,75 +1,55 @@
-"use client";
-import { useState } from "react";
-import Link from "next/link";
-import { HeaderItem } from "../../../../types/menu";
-import { usePathname } from "next/navigation";
+'use client'
+import { useState } from 'react'
+import Link from 'next/link'
+import { HeaderItem } from '../../../../types/menu'
+import { usePathname } from 'next/navigation'
+import { Icon } from '@iconify/react/dist/iconify.js'
 
 const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
-  const [submenuOpen, setSubmenuOpen] = useState(false);
-  const path = usePathname();
-  const handleMouseEnter = () => {
-    if (item.submenu) {
-      setSubmenuOpen(true);
-    }
-  };
-  const handleMouseLeave = () => {
-    setSubmenuOpen(false);
-  };
+  const [submenuOpen, setSubmenuOpen] = useState(false)
+  const path = usePathname()
 
   return (
     <div
-      className="relative"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+      className='relative'
+      onMouseEnter={() => item.submenu && setSubmenuOpen(true)}
+      onMouseLeave={() => setSubmenuOpen(false)}>
       <Link
         href={item.href}
-        className={`text-lg flex hover:text-black capitalized  ${
-          path === item.href ? "text-black/75 " : " text-black/75 "
-        }`}
-      >
+        className={`flex items-center gap-0.5 text-sm font-medium transition-colors duration-200 py-1 ${
+          path === item.href
+            ? 'text-primary'
+            : 'text-darkmode/70 hover:text-primary'
+        }`}>
         {item.label}
         {item.submenu && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1.5em"
-            height="1.5em"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1.5"
-              d="m7 10l5 5l5-5"
-            />
-          </svg>
+          <Icon
+            icon='mdi:chevron-down'
+            width='16'
+            height='16'
+            className={`transition-transform duration-200 ${submenuOpen ? 'rotate-180' : ''}`}
+          />
         )}
       </Link>
-      {submenuOpen && (
-        <div
-          className={`absolute py-2 left-0 mt-0.5 w-60 bg-white dark:bg-darklight dark:text-white shadow-lg rounded-lg `}
-          data-aos="fade-up"
-          data-aos-duration="500"
-        >
-          {item.submenu?.map((subItem, index) => (
+
+      {submenuOpen && item.submenu && (
+        <div className='absolute top-full left-0 mt-1 w-52 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden z-50'>
+          {item.submenu.map((subItem, index) => (
             <Link
               key={index}
               href={subItem.href}
-              className={`block px-4 py-2   ${
+              className={`block px-4 py-3 text-sm transition-colors duration-200 border-b border-gray-50 last:border-0 ${
                 path === subItem.href
-                  ? "text-white"
-                  : "text-black dark:text-white hover:bg-primary"
-              }`}
-            >
+                  ? 'text-primary bg-primary/5 font-semibold'
+                  : 'text-darkmode/70 hover:text-primary hover:bg-primary/5'
+              }`}>
               {subItem.label}
             </Link>
           ))}
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default HeaderLink;
+export default HeaderLink

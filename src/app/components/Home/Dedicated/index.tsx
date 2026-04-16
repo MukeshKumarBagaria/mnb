@@ -1,56 +1,99 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { Icon } from '@iconify/react'
+
+const pillars = [
+  { icon: 'mdi:lightbulb-on-outline', text: 'Strategy-led from day one' },
+  { icon: 'mdi:chart-box-outline', text: 'Data-backed every step' },
+  { icon: 'mdi:bullseye-arrow', text: 'Measurable, scalable results' },
+]
 
 const Dedicated = () => {
   return (
-    <section className='relative bg-cover bg-center overflow-hidden'>
-      <div className='container mx-auto max-w-7xl px-4'>
-        <div className='grid grid-cols-1 lg:grid-cols-12 gap-5'>
-          <Image
-            src='/images/dedicated/spiral.svg'
-            height={272}
-            width={686}
-            alt='spiral-design'
-            className='absolute left-0 top-0 hidden lg:block -z-10'
-          />
-          {/* Left Column */}
-          <div className='col-span-12 lg:col-span-6 justify-self-center'>
+    <section className='relative overflow-hidden py-16 md:py-24'>
+      {/* Bg decoration */}
+      <div className='absolute inset-0 -z-10' style={{
+        background: 'linear-gradient(135deg, #f5f7ff 0%, #ffffff 60%)'
+      }} />
+      <div className='absolute top-0 right-0 w-[300px] h-[300px] rounded-full -z-10 opacity-30'
+        style={{ background: 'radial-gradient(circle, #fcbd2130 0%, transparent 70%)' }} />
+
+      <div className='container mx-auto max-w-7xl px-4 sm:px-6'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center'>
+
+          {/* ── Left: Image with overlaid badge ── */}
+          <div
+            className='relative flex items-center justify-center order-2 lg:order-1'
+            data-aos='fade-right'
+            data-aos-duration='800'>
+            {/* Decorative ring */}
+            <div className='absolute w-[85%] h-[85%] rounded-full border-2 border-dashed border-primary/15 animate-[spin_25s_linear_infinite]' />
+
             <Image
               src='/images/dedicated/man.svg'
-              alt='strategy-icon'
-              width={416}
+              alt='Strategy illustration'
+              width={420}
               height={530}
-              className='mx-auto md:mx-0'
+              className='w-full max-w-[260px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-none relative z-10 drop-shadow-xl'
+              loading='lazy'
             />
+
+            {/* Floating achievement card */}
+            <div className='absolute bottom-6 -right-2 sm:right-4 z-20 rounded-2xl shadow-xl p-3.5 flex items-center gap-3 animate-float-medium'
+              style={{ backgroundColor: '#282739', maxWidth: 200 }}>
+              <div className='w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0'
+                style={{ backgroundColor: '#fcbd2120' }}>
+                <Icon icon='mdi:trophy-outline' width='18' style={{ color: '#fcbd21' }} />
+              </div>
+              <div>
+                <p className='text-white font-bold text-xs leading-none'>Strategy First</p>
+                <p className='text-white/40 text-[10px] mt-0.5'>Always execution second</p>
+              </div>
+            </div>
           </div>
 
-          {/* Right Column */}
-          <div className='col-span-12 lg:col-span-6'>
-            <div className='relative'>
-              <Image
-                src='/images/dedicated/comma.svg'
-                alt='comma-image'
-                width={200}
-                height={106}
-                className='absolute -top-16 -left-32 hidden lg:block'
-              />
-            </div>
-            <h2 className='text-center -mr-1 lg:text-start lg:leading-20 leading-14'>
-              "We don't just market brands —{' '}
-              <span className='text-primary'>
-                we build systems that grow them.
-              </span>
-              "
-            </h2>
-            <p className='text-xl font-medium text-black/55 mt-5 text-center lg:text-start'>
+          {/* ── Right: Quote + pillars ── */}
+          <div
+            className='text-center lg:text-left order-1 lg:order-2'
+            data-aos='fade-left'
+            data-aos-duration='800'>
+
+            <span className='section-label inline-flex mx-auto lg:mx-0 mb-4'>OUR PROMISE</span>
+
+            {/* Large blockquote */}
+            <blockquote className='font-extrabold text-darkmode leading-tight mb-6'
+              style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)' }}>
+              &ldquo;We don&apos;t just market brands —{' '}
+              <span className='text-primary'>we build systems</span>{' '}
+              that grow them.&rdquo;
+            </blockquote>
+
+            <p className='text-darkmode/55 text-sm md:text-base mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed'>
               Every strategy we build is rooted in audience insights, brand
               positioning, and performance data. We partner with brands that
               value clarity, consistency, and compounding growth.
             </p>
-            <h5 className='mt-12 lg:pl-32 relative lg:before:block before:hidden before:absolute before:bg-primary before:h-0.5 before:w-24 before:left-0 before:bottom-1/2 text-center lg:text-start'>
-              M&B Strategy
-            </h5>
+
+            {/* Pillars */}
+            <div className='flex flex-col gap-3 mb-8'>
+              {pillars.map((p, i) => (
+                <div key={i} className='flex items-center gap-3 justify-center lg:justify-start'>
+                  <div className='w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0'
+                    style={{ backgroundColor: '#5170ff15' }}>
+                    <Icon icon={p.icon} width='16' className='text-primary' />
+                  </div>
+                  <span className='text-sm font-semibold text-darkmode/80'>{p.text}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Attribution */}
+            <div className='flex items-center gap-3 justify-center lg:justify-start'>
+              <div className='w-10 h-[2px] rounded-full' style={{ backgroundColor: '#fcbd21' }} />
+              <span className='font-extrabold text-darkmode text-sm'>M&amp;B Strategy</span>
+            </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Manrope } from 'next/font/google'
+import { Open_Sans } from 'next/font/google'
 import './globals.css'
 import Header from '@/app/components/Layout/Header'
 import Footer from '@/app/components/Layout/Footer'
@@ -6,7 +6,11 @@ import ScrollToTop from '@/app/components/ScrollToTop'
 import Aoscompo from '@/utils/aos'
 import { Metadata } from 'next'
 
-const font = Manrope({ subsets: ['latin'] })
+const font = Open_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Marketing & Branding Strategy Agency | M&B Strategy',

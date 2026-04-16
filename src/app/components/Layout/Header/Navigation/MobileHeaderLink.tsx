@@ -1,55 +1,61 @@
-import { useState } from "react";
-import Link from "next/link";
-import { HeaderItem } from "../../../../types/menu";
+'use client'
+import { useState } from 'react'
+import Link from 'next/link'
+import { HeaderItem } from '../../../../types/menu'
+import { Icon } from '@iconify/react/dist/iconify.js'
 
-const MobileHeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
-  const [submenuOpen, setSubmenuOpen] = useState(false);
+const MobileHeaderLink: React.FC<{ item: HeaderItem; onClick?: () => void }> = ({
+  item,
+  onClick,
+}) => {
+  const [submenuOpen, setSubmenuOpen] = useState(false)
 
   const handleToggle = () => {
-    setSubmenuOpen(!submenuOpen);
-  };
+    if (item.submenu) {
+      setSubmenuOpen(!submenuOpen)
+    }
+  }
 
   return (
-    <div className="relative w-full">
-      <Link
-        href={item.href}
+    <div className='w-full border-b border-white/10 last:border-0'>
+      <button
         onClick={item.submenu ? handleToggle : undefined}
-        className="flex items-center justify-between w-full py-2 text-white text-muted focus:outline-hidden"
-      >
-        {item.label}
-        {item.submenu && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1.5em"
-            height="1.5em"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1.5"
-              d="m7 10l5 5l5-5"
-            />
-          </svg>
+        className='w-full flex items-center justify-between py-3.5 px-2 text-left focus:outline-none'>
+        {item.submenu ? (
+          <span className='text-white/90 font-medium text-base'>{item.label}</span>
+        ) : (
+          <Link
+            href={item.href}
+            onClick={onClick}
+            className='text-white/90 font-medium text-base w-full block'>
+            {item.label}
+          </Link>
         )}
-      </Link>
+        {item.submenu && (
+          <Icon
+            icon='mdi:chevron-down'
+            width='20'
+            height='20'
+            className={`text-white/60 transition-transform duration-200 ${submenuOpen ? 'rotate-180' : ''}`}
+          />
+        )}
+      </button>
+
       {submenuOpen && item.submenu && (
-        <div className="bg-white p-2 w-full">
+        <div className='bg-white/5 rounded-xl mx-2 mb-3 overflow-hidden'>
           {item.submenu.map((subItem, index) => (
             <Link
               key={index}
               href={subItem.href}
-              className="block py-2 text-gray-500 hover:bg-gray-200"
-            >
+              onClick={onClick}
+              className='block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm border-b border-white/5 last:border-0'>
               {subItem.label}
             </Link>
           ))}
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default MobileHeaderLink;
+export default MobileHeaderLink

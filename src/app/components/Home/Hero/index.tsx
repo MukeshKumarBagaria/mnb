@@ -4,218 +4,165 @@ import Image from 'next/image'
 import { Icon } from '@iconify/react/dist/iconify.js'
 
 const stats = [
-  { value: '150+', label: 'Brands Scaled' },
-  { value: '3x', label: 'Avg. ROI' },
-  { value: '97%', label: 'Client Retention' },
+  { value: '150+', label: 'Brands Scaled', icon: 'mdi:briefcase-check-outline' },
+  { value: '3×', label: 'Average ROI', icon: 'mdi:trending-up' },
+  { value: '97%', label: 'Client Retention', icon: 'mdi:heart-outline' },
 ]
 
 const Hero = () => {
   return (
-    <section className='relative overflow-hidden h-screen flex items-center'>
-      {/* Background gradient */}
-      <div className='absolute inset-0 bg-gradient-to-br from-white via-[#F0FDFA] to-[#E0F5F0] -z-10'></div>
-      {/* Decorative blobs */}
-      <div className='absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10'></div>
-      <div className='absolute bottom-10 right-20 w-96 h-96 bg-primary/8 rounded-full blur-3xl -z-10'></div>
+    <section className='relative overflow-hidden min-h-screen flex items-center'>
+      {/* ── Background ── */}
+      <div className='absolute inset-0 -z-10' style={{
+        background: 'linear-gradient(135deg, #ffffff 0%, #f0f3ff 45%, #e8edff 100%)'
+      }} />
+      {/* Geometric blobs */}
+      <div className='absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full -z-10 opacity-40'
+        style={{ background: 'radial-gradient(circle, #5170ff22 0%, transparent 70%)' }} />
+      <div className='absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full -z-10 opacity-30'
+        style={{ background: 'radial-gradient(circle, #fcbd2130 0%, transparent 70%)' }} />
+      {/* Dot grid pattern */}
+      <div className='absolute inset-0 -z-10 opacity-[0.03]'
+        style={{ backgroundImage: 'radial-gradient(circle, #282739 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
 
-      <div className='container mx-auto max-w-7xl px-4 pt-28 pb-16 lg:pt-20 lg:pb-10'>
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 items-center'>
-          {/* LEFT — Content */}
-          <div className='animate-fade-in-up'>
-            <div className='inline-flex items-center gap-2 py-2 px-5 bg-primary/10 rounded-full mb-6'>
-              <div className='w-2 h-2 bg-primary rounded-full animate-pulse'></div>
-              <p className='text-primary text-sm font-bold tracking-wider'>
-                STRATEGY-LED GROWTH AGENCY
-              </p>
+      <div className='container mx-auto max-w-7xl px-4 sm:px-6 w-full pt-24 pb-12 md:pt-28 md:pb-16'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-8 items-center'>
+
+          {/* ── LEFT: Content ── */}
+          <div className='animate-fade-in-up text-center lg:text-left order-2 lg:order-1'>
+
+            {/* Label pill */}
+            <div className='inline-flex items-center gap-2 py-2 px-4 rounded-full mb-5 border border-primary/20'
+              style={{ backgroundColor: '#5170ff15' }}>
+              <span className='w-2 h-2 rounded-full bg-primary animate-pulse block' />
+              <span className='text-primary text-xs font-bold tracking-[0.12em] uppercase'>
+                Strategy-Led Growth Agency
+              </span>
             </div>
 
-            <h1 className='text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-6'>
-              Marketing &<br />
-              Branding Strategies<br />
-              That Drive{' '}
-              <span className='relative inline-block'>
-                <span className='text-primary'>Real Growth</span>
-                <span className='absolute -bottom-1 left-0 w-full h-[3px] bg-primary rounded-full animate-expand-width'></span>
+            {/* Main heading */}
+            <h1 className='font-extrabold text-darkmode mb-5 leading-[1.1]'
+              style={{ fontSize: 'clamp(2rem, 5.5vw, 3.75rem)' }}>
+              Marketing &amp;&nbsp;Branding{' '}
+              <br className='hidden xs:block' />
+              Strategies That{' '}
+              <span className='relative whitespace-nowrap'>
+                <span className='text-primary'>Drive Growth</span>
+                {/* Underline with accent */}
+                <svg className='absolute -bottom-1 left-0 w-full' height='6' viewBox='0 0 300 6' fill='none' preserveAspectRatio='none'>
+                  <path d='M0 3 Q75 0 150 3 Q225 6 300 3' stroke='#fcbd21' strokeWidth='3' strokeLinecap='round' fill='none'
+                    className='animate-expand-width' style={{ strokeDasharray: 400, strokeDashoffset: 0 }} />
+                </svg>
               </span>
             </h1>
 
-            <p className='text-lg sm:text-xl text-black/55 mb-10 max-w-xl leading-relaxed'>
+            {/* Sub-copy */}
+            <p className='text-darkmode/55 mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0'
+              style={{ fontSize: 'clamp(0.9rem, 1.8vw, 1.1rem)' }}>
               We help brands scale through strategic Email Marketing, SEO
-              optimisation, and high-performing Social Media management —
-              built to convert, not just look good.
+              optimisation, and high-performing Social Media — built to
+              convert, not just look good.
             </p>
 
-            <div className='flex flex-col sm:flex-row gap-4 mb-14'>
+            {/* CTAs */}
+            <div className='flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-10'>
               <Link href='/contact'>
-                <button className='flex items-center justify-center gap-2 bg-primary text-white text-lg font-semibold py-4 px-10 rounded-full hover:bg-darkmode hover:cursor-pointer transition-all duration-300 shadow-lg shadow-primary/25 w-full sm:w-auto hover:scale-[1.03] active:scale-[0.98]'>
+                <button className='flex items-center justify-center gap-2 font-bold text-white rounded-full px-7 py-3.5 text-sm md:text-base w-full sm:w-auto transition-all duration-300 shadow-lg'
+                  style={{ background: 'linear-gradient(135deg, #5170ff 0%, #7c8fff 100%)', boxShadow: '0 8px 24px rgba(81,112,255,0.35)' }}
+                  onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-2px)')}
+                  onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}>
                   Get a Free Strategy Call
-                  <Icon icon='tabler:arrow-right' width='20' height='20' />
+                  <Icon icon='tabler:arrow-right' width='18' />
                 </button>
               </Link>
               <Link href='/services'>
-                <button className='flex items-center justify-center gap-2 bg-white text-darkmode text-lg font-semibold py-4 px-10 rounded-full border-2 border-gray-200 hover:border-primary hover:text-primary hover:cursor-pointer transition-all duration-300 w-full sm:w-auto hover:scale-[1.03] active:scale-[0.98]'>
+                <button className='flex items-center justify-center gap-2 font-bold rounded-full px-7 py-3.5 text-sm md:text-base w-full sm:w-auto transition-all duration-300 border-2 border-gray-200 hover:border-primary hover:text-primary text-darkmode bg-white'>
                   View Our Services
                 </button>
               </Link>
             </div>
 
             {/* Stats strip */}
-            <div className='flex flex-wrap gap-8 sm:gap-12'>
+            <div className='flex flex-wrap gap-5 sm:gap-8 justify-center lg:justify-start'>
               {stats.map((stat, i) => (
                 <div
                   key={i}
-                  className='animate-fade-in-up'
-                  style={{ animationDelay: `${0.8 + i * 0.15}s` }}>
-                  <p className='text-3xl sm:text-4xl font-extrabold text-darkmode'>
-                    {stat.value}
-                  </p>
-                  <p className='text-sm text-black/40 font-medium mt-1'>
-                    {stat.label}
-                  </p>
+                  className='flex items-center gap-2.5 animate-fade-in-up'
+                  style={{ animationDelay: `${0.6 + i * 0.15}s` }}>
+                  <div className='w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0'
+                    style={{ backgroundColor: '#5170ff15' }}>
+                    <Icon icon={stat.icon} width='18' className='text-primary' />
+                  </div>
+                  <div>
+                    <p className='text-xl sm:text-2xl font-extrabold text-darkmode leading-none'>{stat.value}</p>
+                    <p className='text-xs text-darkmode/40 font-medium mt-0.5'>{stat.label}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* RIGHT — Image */}
-          <div className='relative flex items-center justify-center lg:justify-end animate-fade-in-right'>
-            {/* Glow effect behind image */}
-            <div className='absolute w-[85%] h-[85%] bg-gradient-to-br from-primary/15 to-[#99F6E4]/20 rounded-full blur-2xl'></div>
+          {/* ── RIGHT: Visual ── */}
+          <div className='relative flex items-center justify-center order-1 lg:order-2 animate-fade-in-right'>
+            {/* Glow ring behind image */}
+            <div className='absolute w-[90%] h-[90%] rounded-full opacity-60'
+              style={{ background: 'radial-gradient(circle, #5170ff18 0%, #fcbd2110 50%, transparent 80%)' }} />
 
+            {/* Main image */}
             <Image
               src='/images/hero/banner-image.png'
-              alt='M&B Strategy — Marketing & Branding'
-              width={620}
-              height={580}
+              alt='M&B Strategy'
+              width={560}
+              height={520}
               priority
-              className='relative z-10 drop-shadow-2xl'
+              className='relative z-10 drop-shadow-2xl w-[78%] sm:w-[62%] lg:w-full max-w-[420px] lg:max-w-none'
             />
 
-            {/* Floating badges */}
-            <div className='absolute top-8 right-4 lg:right-0 bg-white rounded-2xl shadow-xl px-5 py-3 z-20 flex items-center gap-3 animate-float-slow'>
-              <div className='w-10 h-10 bg-primary/15 rounded-xl flex items-center justify-center'>
-                <Icon
-                  icon='mdi:email-outline'
-                  width='22'
-                  height='22'
-                  className='text-primary'
-                />
+            {/* Floating card — Email */}
+            <div className='absolute top-6 right-3 sm:top-10 sm:right-4 lg:-right-2 z-20 flex items-center gap-2.5 rounded-2xl shadow-xl px-3.5 py-2.5 animate-float-slow'
+              style={{ backgroundColor: '#fff', border: '1px solid #f0f3ff' }}>
+              <div className='w-8 h-8 rounded-xl flex items-center justify-center' style={{ backgroundColor: '#5170ff18' }}>
+                <Icon icon='mdi:email-fast-outline' width='16' className='text-primary' />
               </div>
               <div>
-                <p className='text-xs font-bold text-darkmode'>
-                  Email Marketing
-                </p>
-                <p className='text-[10px] text-black/40'>+147% avg ROI</p>
+                <p className='text-[10px] font-bold text-darkmode leading-none'>Email Marketing</p>
+                <p className='text-[9px] text-darkmode/40 mt-0.5 leading-none'>+147% avg ROI</p>
               </div>
             </div>
 
-            <div className='absolute bottom-16 left-0 lg:-left-4 bg-white rounded-2xl shadow-xl px-5 py-3 z-20 flex items-center gap-3 animate-float-medium'>
-              <div className='w-10 h-10 bg-[#FEF3C7] rounded-xl flex items-center justify-center'>
-                <Icon
-                  icon='mdi:magnify'
-                  width='22'
-                  height='22'
-                  className='text-amber-500'
-                />
+            {/* Floating card — SEO */}
+            <div className='absolute bottom-14 left-0 sm:-left-3 z-20 flex items-center gap-2.5 rounded-2xl shadow-xl px-3.5 py-2.5 animate-float-medium'
+              style={{ backgroundColor: '#fff', border: '1px solid #f0f3ff' }}>
+              <div className='w-8 h-8 rounded-xl flex items-center justify-center bg-amber-50'>
+                <Icon icon='mdi:magnify' width='16' className='text-amber-500' />
               </div>
               <div>
-                <p className='text-xs font-bold text-darkmode'>
-                  SEO Optimisation
-                </p>
-                <p className='text-[10px] text-black/40'>Page 1 rankings</p>
+                <p className='text-[10px] font-bold text-darkmode leading-none'>SEO Optimisation</p>
+                <p className='text-[9px] text-darkmode/40 mt-0.5 leading-none'>Page 1 rankings</p>
               </div>
             </div>
 
-            <div className='absolute bottom-4 right-8 lg:right-4 bg-white rounded-2xl shadow-xl px-5 py-3 z-20 flex items-center gap-3 animate-float-fast'>
-              <div className='w-10 h-10 bg-[#FCE7F3] rounded-xl flex items-center justify-center'>
-                <Icon
-                  icon='mdi:bullhorn-outline'
-                  width='22'
-                  height='22'
-                  className='text-pink-500'
-                />
+            {/* Floating card — Social */}
+            <div className='absolute bottom-3 right-4 sm:right-6 lg:right-2 z-20 flex items-center gap-2.5 rounded-2xl shadow-xl px-3.5 py-2.5 animate-float-fast'
+              style={{ backgroundColor: '#fff', border: '1px solid #f0f3ff' }}>
+              <div className='w-8 h-8 rounded-xl flex items-center justify-center bg-pink-50'>
+                <Icon icon='mdi:bullhorn-outline' width='16' className='text-pink-500' />
               </div>
               <div>
-                <p className='text-xs font-bold text-darkmode'>Social Media</p>
-                <p className='text-[10px] text-black/40'>Brand awareness</p>
+                <p className='text-[10px] font-bold text-darkmode leading-none'>Social Media</p>
+                <p className='text-[9px] text-darkmode/40 mt-0.5 leading-none'>Brand awareness</p>
               </div>
+            </div>
+
+            {/* Accent badge — trusted */}
+            <div className='absolute top-1/2 -left-2 sm:-left-6 -translate-y-1/2 z-20 rounded-2xl shadow-xl px-3.5 py-3 animate-float-slow hidden sm:block'
+              style={{ backgroundColor: '#282739' }}>
+              <p className='text-white font-extrabold text-sm leading-none'>150+</p>
+              <p className='text-white/50 text-[9px] mt-0.5'>Brands Scaled</p>
             </div>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        @keyframes fade-in-right {
-          from {
-            opacity: 0;
-            transform: translateX(40px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        @keyframes expand-width {
-          from {
-            width: 0;
-          }
-          to {
-            width: 100%;
-          }
-        }
-        @keyframes float-slow {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-12px);
-          }
-        }
-        @keyframes float-medium {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(10px);
-          }
-        }
-        @keyframes float-fast {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-8px);
-          }
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 0.7s ease-out both;
-        }
-        .animate-fade-in-right {
-          animation: fade-in-right 0.8s ease-out 0.3s both;
-        }
-        .animate-expand-width {
-          animation: expand-width 1s ease-out 0.8s both;
-        }
-        .animate-float-slow {
-          animation: float-slow 3s ease-in-out infinite;
-        }
-        .animate-float-medium {
-          animation: float-medium 3.5s ease-in-out 0.5s infinite;
-        }
-        .animate-float-fast {
-          animation: float-fast 4s ease-in-out 1s infinite;
-        }
-      `}</style>
     </section>
   )
 }
