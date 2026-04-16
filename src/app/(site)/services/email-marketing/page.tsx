@@ -144,10 +144,8 @@ export default function EmailMarketingPage() {
             {features.map((f, i) => (
               <div key={i}
                 data-aos='fade-up' data-aos-delay={i * 80} data-aos-duration='600'
-                className='bg-white rounded-xl md:rounded-2xl p-5 md:p-7 shadow-sm flex gap-4 items-start'
-                style={{ border: '1px solid #eef0ff', transition: 'transform 0.3s ease, box-shadow 0.3s ease' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)'; (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 32px rgba(81,112,255,0.12)' }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; (e.currentTarget as HTMLElement).style.boxShadow = '' }}>
+                className='bg-white rounded-xl md:rounded-2xl p-5 md:p-7 shadow-sm flex gap-4 items-start transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(81,112,255,0.12)]'
+                style={{ border: '1px solid #eef0ff' }}>
                 <div className='w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5'
                   style={{ background: 'linear-gradient(135deg, #5170ff 0%, #7c8fff 100%)' }}>
                   <Icon icon={f.icon} width='20' className='text-white' />

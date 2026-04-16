@@ -144,10 +144,8 @@ export default function SocialMediaPage() {
             {features.map((f, i) => (
               <div key={i}
                 data-aos='fade-up' data-aos-delay={i * 80} data-aos-duration='600'
-                className='bg-white rounded-xl md:rounded-2xl p-5 md:p-7 shadow-sm flex gap-4 items-start transition-all duration-300'
-                style={{ border: '1px solid #eeecff' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)'; (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 32px rgba(40,39,57,0.1)' }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; (e.currentTarget as HTMLElement).style.boxShadow = '' }}>
+                className='bg-white rounded-xl md:rounded-2xl p-5 md:p-7 shadow-sm flex gap-4 items-start transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(40,39,57,0.1)]'
+                style={{ border: '1px solid #eeecff' }}>
                 <div className='w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5'
                   style={{ background: 'linear-gradient(135deg, #282739 0%, #3d3c56 100%)' }}>
                   <Icon icon={f.icon} width='20' className='text-white' />
@@ -173,10 +171,8 @@ export default function SocialMediaPage() {
             {platforms.map((p, i) => (
               <div key={i}
                 data-aos='fade-up' data-aos-delay={i * 80} data-aos-duration='600'
-                className='flex flex-col items-center gap-2.5 bg-white rounded-xl md:rounded-2xl p-5 md:p-6 shadow-md transition-all duration-300'
-                style={{ border: '1px solid #eee', minWidth: 100 }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)'; (e.currentTarget as HTMLElement).style.borderColor = p.color + '40' }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; (e.currentTarget as HTMLElement).style.borderColor = '#eee' }}>
+                className='flex flex-col items-center gap-2.5 bg-white rounded-xl md:rounded-2xl p-5 md:p-6 shadow-md transition-all duration-300 hover:-translate-y-1'
+                style={{ border: '1px solid #eee', minWidth: 100 }}>
                 <Icon icon={p.icon} width='36' style={{ color: p.color }} />
                 <span className='text-xs md:text-sm font-bold text-darkmode'>{p.name}</span>
               </div>
