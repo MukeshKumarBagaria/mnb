@@ -300,8 +300,8 @@ body {
 .animate-float-slow { animation: float-slow 3s ease-in-out infinite; }
 .animate-float-medium { animation: float-medium 3.5s ease-in-out 0.5s infinite; }
 .animate-float-fast { animation: float-fast 4s ease-in-out 1s infinite; }
-.animate-marquee-left { animation: marquee-left 35s linear infinite; }
-.animate-marquee-right { animation: marquee-right 40s linear infinite; }
+.animate-marquee-left { animation: marquee-left 22s linear infinite; }
+.animate-marquee-right { animation: marquee-right 26s linear infinite; }
 .animate-marquee-left:hover,
 .animate-marquee-right:hover { animation-play-state: paused; }
 
